@@ -127,6 +127,35 @@ public class JDBCTest {
 		}
 	}
 	
+	public static void deleteUser(){
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement preparedStatement = null;
+		// 为什么声明完了 数据库连接 和数据库实例之后 我马上要写一个try catch
+		// 那是因为持久性操作 本身具有不稳定性（比如 表名写错、SQL链接写错）
+		// 总结一句话 就是吃就吃的操作具有不稳定性 需要try catch起来
+		try {
+			//f3可以快速定位到 改变量的代码中
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager
+					.getConnection("jdbc:mysql://cdb-kthncrwi.bj.tencentcdb.com:10159/chensiwei","root","3cwangzi");
+			preparedStatement = connection
+					.prepareStatement("delete from ahgc_user where id = ?");
+			preparedStatement.setObject(1,"170");
+			int executeNum = preparedStatement.executeUpdate();
+			if(executeNum == 0){
+				System.out.println("删除失败");
+			}
+			else{
+				System.out.println("删除成功");
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
 	// 根据用户姓名查找id
 	public  static void findByUserName(){
 		java.sql.Connection connection = null;
