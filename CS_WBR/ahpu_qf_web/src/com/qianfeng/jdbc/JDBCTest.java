@@ -1,5 +1,6 @@
 package com.qianfeng.jdbc;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 	/**
 	 *  JDBC :一项技术，专门为Java链接数据库提供的 操作接口
 	 *  JDBC 只存在于Java
@@ -28,7 +29,10 @@ import java.sql.DriverManager;
 	 * */
 public class JDBCTest {
 	public static void main(String[] args){
-		selectAll();
+		//selectAll();
+		//addUser();
+		//findByUserName();
+		updateUser();
 	}
 	
 	public static void selectAll(){
@@ -49,8 +53,9 @@ public class JDBCTest {
 			// 5:
 			while(resultSet.next()){
 				// 6:处理结果集
+				String idString = (String) resultSet.getObject("ID");
 				String username = (String) resultSet.getObject("username");
-				System.out.println(username);
+				System.out.println(idString+":"+username);
 			}
 			// 7:关闭数据库链接
 			resultSet.close();
@@ -59,7 +64,95 @@ public class JDBCTest {
 			
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally{
+			
 		}
 	}
+	
+	public static void addUser(){
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement preparedStatement = null;
+		// 为什么声明完了 数据库连接 和数据库实例之后 我马上要写一个try catch
+		// 那是因为持久性操作 本身具有不稳定性（比如 表名写错、SQL链接写错）
+		// 总结一句话 就是吃就吃的操作具有不稳定性 需要try catch起来
+		try {
+			//f3可以快速定位到 改变量的代码中
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager
+					.getConnection("jdbc:mysql://cdb-kthncrwi.bj.tencentcdb.com:10159/chensiwei","root","3cwangzi");
+			preparedStatement = connection
+					.prepareStatement("insert into ahgc_user (username) values (?)");
+			preparedStatement.setObject(1,"汪邦荣");
+			int executeNum = preparedStatement.executeUpdate();
+			if(executeNum == 0){
+				System.out.println("添加失败");
+			}
+			else{
+				System.out.println("添加成功");
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateUser(){
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement preparedStatement = null;
+		// 为什么声明完了 数据库连接 和数据库实例之后 我马上要写一个try catch
+		// 那是因为持久性操作 本身具有不稳定性（比如 表名写错、SQL链接写错）
+		// 总结一句话 就是吃就吃的操作具有不稳定性 需要try catch起来
+		try {
+			//f3可以快速定位到 改变量的代码中
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager
+					.getConnection("jdbc:mysql://cdb-kthncrwi.bj.tencentcdb.com:10159/chensiwei","root","3cwangzi");
+			preparedStatement = connection
+					.prepareStatement("update ahgc_user set age = 21 where id = ?");
+			preparedStatement.setObject(1,"129");
+			int executeNum = preparedStatement.executeUpdate();
+			if(executeNum == 0){
+				System.out.println("修改失败");
+			}
+			else{
+				System.out.println("修改成功");
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	// 根据用户姓名查找id
+	public  static void findByUserName(){
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			//f3可以快速定位到 改变量的代码中
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager
+					.getConnection("jdbc:mysql://cdb-kthncrwi.bj.tencentcdb.com:10159/chensiwei","root","3cwangzi");
+			preparedStatement = connection
+					.prepareStatement("select id from ahgc_user where username = ?");
+			preparedStatement.setObject(1, "杨琛");
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				System.out.println(resultSet.getObject("ID"));
+				System.out.println(resultSet.getObject(1));
+				//170
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
 
 }
