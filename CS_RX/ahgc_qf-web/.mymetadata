@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ahgc_qf-web"
+  id="myeclipse.1590977285975"
+  context-root="/ahgc_qf-web"
+  j2ee-spec="6.0"
+  archive="ahgc_qf-web.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
