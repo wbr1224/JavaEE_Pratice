@@ -11,26 +11,26 @@ public class StartGame {
 		YaSe yaSe = new YaSe();
 		yaSe.setName("ÑÇÉª");
 		yaSe.setAttackNumber(200);
-		yaSe.setBloodNumber(2000);
+		yaSe.setAtttackNumber(2000);
 		
 		Ake ake = new Ake();
 		ake.setName("°¢éð");
 		ake.setAttackNumber(400);
-		ake.setBloodNumber(1000);
+		ake.setAttackNumber(1000);
 		
 		while(true){
 			int temp = new Random().nextInt(2);
 			if(temp == 0){
 				// ÑÇÉª´ò°¢éð
 				yaSe.attack(ake);
-				if(ake.getBloodNumber() <=0){
+				if(ake.getBooldNumber() <=0){
 					yaSe.successDESC();
 					return;
 				}
 			}
 			if(temp == 1){
 				ake.attack(yaSe);
-				if(yaSe.getBloodNumber() <= 0){
+				if(yaSe.getBooldNumber() <= 0){
 					ake.successDESC();
 					return;
 				}
