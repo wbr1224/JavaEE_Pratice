@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.qianfeng.biz.UserBIZ;
+import com.qianfeng.enums.UserEnum;
 
 public class LoginServlet extends HttpServlet {
 
@@ -30,8 +31,12 @@ public class LoginServlet extends HttpServlet {
 		UserBIZ userBIZ = new UserBIZ();
 		String result = userBIZ
 				.login(username, password, syscode, validatecode);
-		request.getRequestDispatcher("index.jsp?msg=" + result + "").forward(
-				request, response);
+		if(result.equals(UserEnum.LOGIN_SUCCESS.getValue())){
+			request.getRequestDispatcher("AuctionListServlet").forward(request, response);
+		}
+		else{
+			request.getRequestDispatcher("index.jsp?msg="+result+"").forward(request, response);		}
+		
 	}
 
 }
