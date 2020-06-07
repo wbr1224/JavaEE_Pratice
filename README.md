@@ -8,5 +8,5 @@ markdown 插入链接格式 [内容] (url)
 * [CS_WX](https://github.com/wbr1224/JavaEE_Pratice/tree/master/CS_WX)
 * [CS_RB](https://github.com/wbr1224/JavaEE_Pratice/tree/master/CS_RB)
 * [CS_KAJ](https://github.com/wbr1224/JavaEE_Pratice/tree/master/CS_KAJ)
-* [CS_ZMMJ](https://github.com/wbr1224/JavaEE_Pratice/tree/master/CS_ZMM)
+* [CS_ZMM](https://github.com/wbr1224/JavaEE_Pratice/tree/master/CS_ZMM)
 
