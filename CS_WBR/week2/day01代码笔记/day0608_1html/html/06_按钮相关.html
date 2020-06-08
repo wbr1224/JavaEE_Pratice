@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function changeColor1(){
+				var btnObj = document.getElementById("btn");
+				btnObj.style.color = "red";
+			}
+			function changeColor2(obj){
+				obj.style.color = "blue";
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点我变红色" onclick="changeColor1()" id="btn"/>
+		<br />
+		<input type="button" value="点我变蓝色" ondblclick="changeColor2(this)"/>
+		
+		<hr />
+		
+		<form action="http://www.baidu.com">
+			<input type="text" value="666"/>
+			<input type="submit" value="支付1"/>
+			<input type="reset" value="重置"/>
+		</form>
+		
+		<hr />
+		
+		<form action="http://www.baidu.com">
+			<input type="text" />
+			<input type="submit" value="支付2"/>
+			<input type="reset" value="清空"/>
+		</form>
+		
+	
+	</body>
+</html>
