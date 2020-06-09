@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{
+				outline: none;
+			}
+		</style>
+		<script type="text/javascript">
+			function f1(obj){
+				obj.style.border = "1px solid blue";
+			}
+			function f2(obj){
+				var username = obj.value;
+				var sp = document.getElementById("sp");
+				if(username == "zhangsan"){
+					obj.style.border = "1px solid green";
+					sp.style.visibility = "hidden";
+				}else{
+					obj.style.border = "1px solid red";
+					sp.style.visibility = "visible";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<!--
+			要求：
+			1.用户名获取焦点时，边框变成蓝色
+			2.失去焦点时，判断用户名是否正确
+				2.1如果用户名正确，则将边框变成绿色
+				2.2如果用户名不正确，则将边框变成红色色显示红色的登录失败
+		-->
+		
+		<input type="text" onfocus="f1(this)" onblur="f2(this)"/>
+		<span style="color: red;visibility: hidden;" id="sp">用户名错误</span>
+		
+	</body>
+</html>

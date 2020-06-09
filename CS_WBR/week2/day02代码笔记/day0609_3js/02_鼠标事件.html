@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			function changeColor1(obj){
+				obj.style.background = "red";
+			}
+			function changeColor2(obj){
+				obj.style.background = "blue";
+			}
+		</script>
+	</head>
+	<body>
+		<div onmouseover="changeColor1(this)" onmouseout="changeColor2(this)"></div>
+	</body>
+</html>

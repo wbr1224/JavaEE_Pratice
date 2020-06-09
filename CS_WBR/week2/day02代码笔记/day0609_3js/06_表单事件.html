@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function check(){
+				var inp = document.getElementById("inp");
+				var value = inp.value;
+				/*if(value.length > 6){
+					return true;
+				}else{
+					return false;
+				}*/
+				return value.length > 6;
+			}
+		</script>
+	</head>
+	<body>
+		<!--
+			要求：
+			判断输入框中字符串的长度，
+				如果超过了6位，则可以提交
+				反之，不能提交
+		-->
+		<form action="http://www.baidu.com" onsubmit="return check()">
+			<input type="text" id="inp"/>
+			<input type="submit" />
+		</form>
+	</body>
+</html>

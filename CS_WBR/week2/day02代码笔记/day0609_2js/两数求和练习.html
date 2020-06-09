@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function getSum(){
+				// 通过id获取指定的元素对象
+				var num1_obj = document.getElementById("num1");
+				// 通过value属性获取指定元素对象中的内容
+				var value1 = num1_obj.value;
+				
+				var num2_obj = document.getElementById("num2");
+				var value2 = num2_obj.value;
+				
+				// 判断输入框是否为空
+				// 只要你的两个框中有一个是没有值的就不能往下做判断求和
+				if(value1.length == 0 || value2.length == 0){
+					alert("不能为空，请输入数值！！！");
+					clear();
+					return;
+				}
+				
+				// 判断用户输入的内容是否是数值形式的字符串
+				if(isNaN(value1)||isNaN(value2)){
+					alert("输入有误，请输入数值！！！");
+					clear();
+					return;
+				}
+				
+				// 将获取到的字符串内容转换成对应数值才可以进行求和，否则字符串的加法是拼接动作
+				value1 = parseFloat(value1);
+				value2 = parseFloat(value2);
+				
+				
+				var sum = value1 + value2;
+				var result_obj = document.getElementById("result");
+				result_obj.value = sum;
+			}
+			
+			function clear(){
+				var num1_obj = document.getElementById("num1");
+				var num2_obj = document.getElementById("num2");
+				var result_obj = document.getElementById("result");
+				num1_obj.value = "";
+				num2_obj.value = "";
+				result_obj.value = "";
+			}
+		</script>
+	</head>
+	<body>
+		<!--
+			要求：
+			1.有两个输入框用于输入加数和被加数
+			2.有一个"="按钮
+			3.点击此按钮将两个输入框中的内容求和，并输出到第三个输入框
+		
+			分析流程：
+			1.为"="按钮赋予点击事件
+			2.获取两个输入框中的数据
+			3.求和
+			4.将求和结果放到第三个框中
+		-->
+		<input type="text" id="num1"/>
+		+
+		<input type="text" id="num2"/>
+		<input type="button" value="=" onclick="getSum()"/>
+		<input type="text" id="result"/>
+	</body>
+</html>
